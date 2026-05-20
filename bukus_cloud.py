@@ -3,12 +3,13 @@ import time
 import re
 import json
 from bs4 import BeautifulSoup
+import os
 
 URL = "https://bigusbukus.com/"
 BOOK_URL = "https://bigusbukus.com/knjiga/{}"
 
-TELEGRAM_TOKEN = "8818887127:AAEZC3_k639Ww5eCVfc_bP2QIKpdYWPV7jg"
-TELEGRAM_CHAT_ID = "8926636891"
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 STATE_FILE = "state.json"
 WATCHLIST_FILE = "watchlist.txt"
 
