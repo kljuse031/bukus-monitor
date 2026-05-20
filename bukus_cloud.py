@@ -95,7 +95,7 @@ def parse_books_from_page(page=1):
             books.append((book_id, title, author))
 
     return books
-
+#changed
 def get_book_details_from_pages(book_id):
     for page in range(1, 30):
         try:
