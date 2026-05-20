@@ -66,7 +66,7 @@ def parse_books_from_page(page=1):
     url = URL if page == 1 else f"{URL}?page={page}"
     resp = requests.get(url, timeout=10)
     soup = BeautifulSoup(resp.text, "html.parser")
-
+print(f"Page status: {resp.status_code}, content length: {len(resp.text)}, h3 count: {len(soup.find_all('h3'))}")
     books = []
     seen_ids = set()
 
