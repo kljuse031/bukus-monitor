@@ -4,7 +4,10 @@ import re
 import json
 from bs4 import BeautifulSoup
 import os
-
+import sys
+print(f"Python version: {sys.version}")
+print(f"TELEGRAM_TOKEN set: {bool(os.environ.get('TELEGRAM_TOKEN'))}")
+print(f"TELEGRAM_CHAT_ID set: {bool(os.environ.get('TELEGRAM_CHAT_ID'))}")
 URL = "https://bigusbukus.com/"
 BOOK_URL = "https://bigusbukus.com/knjiga/{}"
 
