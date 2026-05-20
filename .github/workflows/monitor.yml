@@ -2,8 +2,11 @@ name: BigusBukus Monitor
 
 on:
   schedule:
-    - cron: '*/20 * * * *'  # every 20 minutes
-  workflow_dispatch:  # allows manual trigger
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   monitor:
@@ -27,15 +30,10 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python bukus_cloud.py
 
-      - name: Save state
-        uses: actions/upload-artifact@v4
-        with:
-          name: state
-          path: state.json
-          overwrite: true
-
-      - name: Restore state
-        uses: actions/download-artifact@v4
-        with:
-          name: state
-        continue-on-error: true
+      - name: Save state to repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add state.json
+          git diff --staged --quiet || git commit -m "Update state"
+          git push
