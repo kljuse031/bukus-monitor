@@ -141,4 +141,16 @@ def check_books():
             print(f"  New book: {title} by {author} (#{book_id})")
 
             if watchlist and is_on_watchlist(title, author, watchlist):
-                msg = f"⭐ *Watchlist match on BigusBukus!*\n\n📖 *{title}*\n✍️ {author or 'Unknown'}\n🔗 [Open book]({BOOK
+                msg = f"⭐ *Watchlist match on BigusBukus!*\n\n📖 *{title}*\n✍️ {author or 'Unknown'}\n🔗 [Open book]({BOOK_URL.format(book_id)})"
+            else:
+                msg = f"📚 *New book on BigusBukus!*\n\n📖 *{title}*\n✍️ {author or 'Unknown'}\n🔗 [Open book]({BOOK_URL.format(book_id)})"
+
+            send_telegram(msg)
+            time.sleep(0.5)
+
+        save_state(current_max)
+
+    except Exception as e:
+        print(f"[{time.strftime('%H:%M')}] Error: {e}")
+
+check_books()
