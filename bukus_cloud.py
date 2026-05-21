@@ -53,7 +53,11 @@ def is_on_watchlist(title, author, watchlist):
 
 def parse_books_from_page(page=1):
     url = URL if page == 1 else f"{URL}?page={page}"
-    resp = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+   resp = requests.get(
+    "https://webcache.googleusercontent.com/search?q=cache:bigusbukus.com",
+    timeout=10,
+    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+)
     soup = BeautifulSoup(resp.text, "html.parser")
     print(f"Status: {resp.status_code}, h3 count: {len(soup.find_all('h3'))}, length: {len(resp.text)}")
     books = []
