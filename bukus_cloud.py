@@ -17,7 +17,7 @@ GITHUB_REPO = "kljuse031/bukus-monitor"
 STATE_FILE = "state.json"
 WATCHLIST_FILE = "watchlist.txt"
 
-HEARTBEAT_MAX_AGE = 19 * 60  # 19 minutes in seconds
+HEARTBEAT_MAX_AGE = 27 * 60  # 19 minutes in seconds
 
 # ─── Cookies ──────────────────────────────────────────────────────────────────
 
